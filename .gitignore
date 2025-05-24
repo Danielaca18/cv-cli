@@ -5,5 +5,5 @@ build/*
 output/*
 
 profiles/*
-!profiles/default.yaml
+!profiles/example.yaml
 *__pycache__
