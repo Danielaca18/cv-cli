@@ -1,0 +1,8 @@
+.venv/
+.vscode/
+
+build/*
+output/*
+
+profiles/*
+!profiles/default.yaml
