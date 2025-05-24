@@ -6,3 +6,4 @@ output/*
 
 profiles/*
 !profiles/default.yaml
+*__pycache__
