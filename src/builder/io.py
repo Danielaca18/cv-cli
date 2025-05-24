@@ -1,0 +1,27 @@
+from os import path, replace, makedirs
+from shutil import copy
+from .constants import OUTPUT_DIR
+
+def move_pdf(pdf_path:str, output_path:str) -> None:
+    """Moves specified pdf file.
+
+    Args:
+        pdf_path (str): source path
+        output_path (str): destination path
+    """
+    if path.exists(pdf_path):
+        replace(pdf_path, output_path)
+        print(f"PDF moved to {output_path}")
+    else:
+        print(f"PDF not found: {pdf_path}")
+
+def init_build(profile_build_dir: str, style_path: str) -> None:
+    """Initializes required directories and files.
+
+    Args:
+        profile_build_dir (str): path to profiles directory
+        style_path (str): path to styles directory
+    """
+    makedirs(f"{OUTPUT_DIR}", exist_ok=True)
+    makedirs(profile_build_dir, exist_ok=True)
+    copy(style_path, profile_build_dir)
