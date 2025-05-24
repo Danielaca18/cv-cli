@@ -8,6 +8,12 @@ LaTeX Resume Generator is a simple Python script that generates a LaTeX resume u
 - Output in PDF format: Generates a high-quality PDF resume using LaTeX.
 - Cross-platform: Works on Windows, macOS, and Linux.
 
+## 📄 Resume Previews
+| Default Template | Sheets Template |
+|------------------|-----------------|
+| ![Default Template](previews/default.png) | ![Sheets Template](previews/sheets.png) |
+
+
 ## 🚀 Getting Started
 ### Prerequisites
 - Python 3.6 or higher
