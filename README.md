@@ -1,20 +1,20 @@
 # Resume Builder
 Resume Builder is a simple Python script that generates a LaTeX resume using the Jinja2 templating engine. It allows you to create a professional-looking resume in PDF format with minimal effort.
 
-## ✨ Features
+## Features
 - Easy to use: Just fill in a YAML file with your information and run the script.
 - Multiple Profiles: Supports multiple profiles, allowing you to create different resumes for different job types.
 - Customizable: Supports multiple templates and allows you to create your own.
 - Output in PDF format: Generates a high-quality PDF resume using LaTeX.
 - Cross-platform: Works on Windows, macOS, and Linux.
 
-## 📄 Resume Previews
+## Resume Previews
 | Default Template | Sheets Template |
 |------------------|-----------------|
 | ![Default Template](previews/default.png) | ![Sheets Template](previews/sheets.png) |
 
 
-## 🚀 Getting Started
+## Getting Started
 ### Prerequisites
 - Python 3.6 or higher
 - LaTeX distribution (e.g., TeX Live, MikTeX) installed on your system
