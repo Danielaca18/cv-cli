@@ -36,9 +36,14 @@ Clone the repository:
    ```
 4. The generated PDF resume will be saved in the `output` directory.
 
-### Acknowledgements
+## Acknowledgements
 - This project uses the [Resume Template](https://github.com/jakegut/resume) by Jake Gutierrez as a base for the LaTeX templates. Thank you for your work!
 - The provided sheets template is inspired by the famous [Sheets Resume](https://sheetsresume.com/resume-template/) by Sheets Resume.
 
 ## License
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
+
+## Planned Features
+- Git Integration
+    - Import Profiles
+    - Import Templates
