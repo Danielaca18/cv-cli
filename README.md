@@ -47,3 +47,6 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 - Git Integration
     - Import Profiles
     - Import Templates
+- Template Configuration
+    - Include files
+    - Name templates
