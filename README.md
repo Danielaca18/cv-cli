@@ -1,5 +1,5 @@
-# Latex Resume Generator
-LaTeX Resume Generator is a simple Python script that generates a LaTeX resume using the Jinja2 templating engine. It allows you to create a professional-looking resume in PDF format with minimal effort.
+# Resume Builder
+Resume Builder is a simple Python script that generates a LaTeX resume using the Jinja2 templating engine. It allows you to create a professional-looking resume in PDF format with minimal effort.
 
 ## ✨ Features
 - Easy to use: Just fill in a YAML file with your information and run the script.
