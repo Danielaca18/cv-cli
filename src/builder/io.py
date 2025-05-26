@@ -4,7 +4,7 @@ from shutil import copy
 from pathlib import Path
 from .constants import OUTPUT_DIR
 
-def move_pdf(pdf_path:str, output_path:str) -> None:
+def move_pdf(pdf_path:str|Path, output_path:str|Path) -> None:
     """Moves specified pdf file.
 
     Args:
@@ -17,16 +17,16 @@ def move_pdf(pdf_path:str, output_path:str) -> None:
     else:
         print(f"PDF not found: {pdf_path}")
 
-def init_template(template_dir: Path, profile_build_dir: str) -> str:
+def init_template(template_dir: Path, profile_build_dir: Path) -> str:
     conf_path = template_dir / "config.yaml"
     with open(conf_path) as f:
         conf = yaml.safe_load(f)
     
     for include in conf["include_files"]:
-        include_path = str(template_dir / include)
+        include_path = template_dir / include
         copy(include_path, profile_build_dir)
 
-def init_build(profile_build_dir: str, template_dir: Path) -> None:
+def init_build(profile_build_dir: Path, template_dir: Path) -> None:
     """Initializes required directories and files.
 
     Args:
