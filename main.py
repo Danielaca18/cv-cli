@@ -163,7 +163,6 @@ def compile_pdf(profile: str, template: str, output_name: str) -> None:
     profile_path = PROFILES_DIR / f"{profile}.yaml"
     template_dir = TEMPLATES_DIR / template
     profile_build_dir = BUILD_DIR / profile
-    style_path = template_dir / STYLE_FNAME
     pdf_fname = f"{output_name}.pdf"
     tex_path = profile_build_dir / TEX_FNAME
 
