@@ -167,7 +167,7 @@ def compile_pdf(profile: str, template: str, output_name: str) -> None:
     pdf_fname = f"{output_name}.pdf"
     tex_path = profile_build_dir / TEX_FNAME
 
-    init_build(profile_build_dir, style_path)
+    init_build(profile_build_dir, template_dir)
     build_template(profile_path, template_dir, tex_path)
     latex_render(profile_build_dir)
     
