@@ -12,4 +12,4 @@ def get_args() -> argparse.Namespace:
     build_parser.add_argument("-t", "--template", default=DEFAULT_TEMPLATE)
     build_parser.add_argument("-o", "--output")
     
-    return build_parser.parse_args()
+    return parser.parse_args()
