@@ -1,0 +1,54 @@
+[build-system]
+requires = ["hatchling >= 1.26"]
+build-backend = "hatchling.build"
+
+[project]
+name = "resume-builder"
+version = "0.1.0"
+description = "Generate LaTeX resumes with profiles and templates"
+readme = "README.md"
+requires-python = ">=3.8"
+authors = [
+    { name = "Daniel Castro" }
+]
+dependencies = [
+  "colorama==0.4.6",
+  "Jinja2==3.1.6",
+  "MarkupSafe==3.0.2",
+  "packaging==25.0",
+  "PyYAML==6.0.2",
+  "watchdog==6.0.0"
+]
+
+[project.optional-dependencies]
+dev = [
+  "coverage==7.8.2",
+  "iniconfig==2.1.0",
+  "pluggy==1.6.0",
+  "pytest==8.3.5",
+  "pytest-cov==6.1.1"
+]
+
+[project.scripts]
+resume = "main:main"
+
+[tool.hatch.build]
+source = ["src"]
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/builder"]
+
+[tool.hatch.envs.default]
+dependencies = [
+  "pytest",
+  "pytest-cov"
+]
+
+[tool.hatch.envs.dev]
+dependencies = [
+  "coverage",
+  "iniconfig",
+  "pluggy",
+  "pytest",
+  "pytest-cov"
+]
