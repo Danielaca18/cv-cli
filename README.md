@@ -24,7 +24,7 @@ Clone the repository:
 ```bash
    git clone https://github.com/danielaca18/resume-builder.git
    cd resume-builder
-   pip install -r requirements.txt
+   pip install .
 ```
 
 ## Usage
@@ -32,7 +32,7 @@ Clone the repository:
 2. Select a template for your resume. You can choose from the provided templates in the `templates` directory or create your own.
 3. Run the script to generate your resume:
    ```bash
-   python main.py -p example -t default
+   resume build -p example -t default
    ```
 4. The generated PDF resume will be saved in the `output` directory.
 
