@@ -1,15 +1,22 @@
-import argparse
+from argparse import ArgumentParser, Namespace
 from .constants import DEFAULT_PROFILE, DEFAULT_TEMPLATE
 
-def get_args() -> argparse.Namespace:
-    parser = argparse.ArgumentParser(prog="resume")
+def build_parser(subparser):
+    build = subparser.add_parser(name="build", help="Generate latex resumes from a yaml profile.")
+    build.add_argument("-p", "--profile", default=DEFAULT_PROFILE)
+    build.add_argument("-t", "--template", default=DEFAULT_TEMPLATE)
+    build.add_argument("-o", "--output")
+
+def git_parser(subparser):
+    git = subparser.add_parser(name="git", help="Sync profiles and templates with git.")
+    git.add_argument("--init", action="store_true", help="Initializes profile git repository.")
+    git.add_argument("--sync", action="store_true", help="Syncs profile with git remote.")
+
+def get_args() -> Namespace:
+    parser = ArgumentParser(prog="resume")
     subparser = parser.add_subparsers(dest="command", required=True)
 
-    build_parser = subparser.add_parser(name="build", help="Generate latex resumes from a yaml profile.")
-    git_parser = subparser.add_parser(name="git", help="Sync profiles and templates with git.")
-
-    build_parser.add_argument("-p", "--profile", default=DEFAULT_PROFILE)
-    build_parser.add_argument("-t", "--template", default=DEFAULT_TEMPLATE)
-    build_parser.add_argument("-o", "--output")
+    build_parser(subparser)
+    git_parser(subparser)
     
     return parser.parse_args()

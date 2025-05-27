@@ -14,8 +14,8 @@ def move_pdf(pdf_path:str|Path, output_path:str|Path) -> None:
     if path.exists(pdf_path):
         replace(pdf_path, output_path)
         print(f"PDF moved to {output_path}")
-    else:
-        print(f"PDF not found: {pdf_path}")
+        return
+    print(f"PDF not found: {pdf_path}")
 
 def init_template(template_dir: Path, profile_build_dir: Path) -> None:
     """Initializes template files according to template config
