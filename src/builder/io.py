@@ -17,7 +17,13 @@ def move_pdf(pdf_path:str|Path, output_path:str|Path) -> None:
     else:
         print(f"PDF not found: {pdf_path}")
 
-def init_template(template_dir: Path, profile_build_dir: Path) -> str:
+def init_template(template_dir: Path, profile_build_dir: Path) -> None:
+    """Initializes template files according to template config
+
+    Args:
+        template_dir (Path): path to templates directory
+        profile_build_dir (Path): path to profiles directory
+    """
     conf_path = template_dir / "config.yaml"
     with open(conf_path) as f:
         conf = yaml.safe_load(f)
