@@ -178,11 +178,14 @@ def compile_pdf(profile: str, template: str, output_name: str) -> None:
 def main():
     args = get_args()
 
-    compile_pdf(
-        profile=args.profile,
-        template=args.template,
-        output_name=args.output or args.profile
-    )
+    if args.command == "build":
+        compile_pdf(
+            profile=args.profile,
+            template=args.template,
+            output_name=args.output or args.profile
+        )
+    elif args.command == "git":
+        print("Git functionality is currently unavailable.")
 
 if __name__ == "__main__":
     main()
