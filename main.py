@@ -150,7 +150,7 @@ sys.path.append("src")
 from builder.cli import get_args
 from builder.render import build_template, latex_render
 from builder.io import init_build, move_pdf
-from builder.constants import PROFILES_DIR, TEMPLATES_DIR, BUILD_DIR, STYLE_FNAME, TEX_FNAME, OUTPUT_DIR
+from builder.constants import PROFILES_DIR, TEMPLATES_DIR, BUILD_DIR, TEX_FNAME, OUTPUT_DIR
 
 def compile_pdf(profile: str, template: str, output_name: str) -> None:
     """Compiles template and profile into a pdf resume.

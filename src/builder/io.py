@@ -28,8 +28,8 @@ def init_template(template_dir: Path, profile_build_dir: Path) -> None:
     with open(conf_path) as f:
         conf = yaml.safe_load(f)
     
-    for include in conf["include_files"]:
-        include_path = template_dir / include
+    for fpath in conf["include_files"]:
+        include_path = template_dir / fpath
         copy(include_path, profile_build_dir)
 
 def init_build(profile_build_dir: Path, template_dir: Path) -> None:
