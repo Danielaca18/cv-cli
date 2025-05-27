@@ -1,5 +1,7 @@
 from argparse import ArgumentParser, Namespace
 from .constants import DEFAULT_PROFILE, DEFAULT_TEMPLATE
+from .render import compile_pdf
+
 
 def build_parser(subparser):
     build = subparser.add_parser(name="build", help="Generate latex resumes from a yaml profile.")
@@ -20,3 +22,15 @@ def get_args() -> Namespace:
     git_parser(subparser)
     
     return parser.parse_args()
+
+def main():
+    args = get_args()
+
+    if args.command == "build":
+        compile_pdf(
+            profile=args.profile,
+            template=args.template,
+            output_name=args.output or args.profile
+        )
+    elif args.command == "git":
+        print("Git functionality is currently unavailable.")
