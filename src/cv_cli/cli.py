@@ -15,7 +15,7 @@ def git_parser(subparser):
     git.add_argument("--sync", action="store_true", help="Syncs profile with git remote.")
 
 def get_args() -> Namespace:
-    parser = ArgumentParser(prog="resume")
+    parser = ArgumentParser(prog="resume", description="Command-line tool to generate resumes from YAML and LaTeX templates")
     subparser = parser.add_subparsers(dest="command", required=True)
 
     build_parser(subparser)
