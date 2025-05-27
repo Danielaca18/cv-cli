@@ -45,8 +45,10 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 
 ## Planned Features
 - Git Integration
-    - Import Profiles
-    - Import Templates
+    - Import & Sync Profiles
+    - Import & Sync Templates
 - Template Configuration
     - Include files
     - Name templates
+- Editor Integration
+    - VSCode

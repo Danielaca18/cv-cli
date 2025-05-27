@@ -150,7 +150,7 @@ sys.path.append("src")
 from builder.cli import get_args
 from builder.render import build_template, latex_render
 from builder.io import init_build, move_pdf
-from builder.constants import PROFILES_DIR, TEMPLATES_DIR, BUILD_DIR, STYLE_FNAME, TEX_FNAME, OUTPUT_DIR
+from builder.constants import PROFILES_DIR, TEMPLATES_DIR, BUILD_DIR, TEX_FNAME, OUTPUT_DIR
 
 def compile_pdf(profile: str, template: str, output_name: str) -> None:
     """Compiles template and profile into a pdf resume.
@@ -163,11 +163,10 @@ def compile_pdf(profile: str, template: str, output_name: str) -> None:
     profile_path = PROFILES_DIR / f"{profile}.yaml"
     template_dir = TEMPLATES_DIR / template
     profile_build_dir = BUILD_DIR / profile
-    style_path = template_dir / STYLE_FNAME
     pdf_fname = f"{output_name}.pdf"
     tex_path = profile_build_dir / TEX_FNAME
 
-    init_build(profile_build_dir, style_path)
+    init_build(profile_build_dir, template_dir)
     build_template(profile_path, template_dir, tex_path)
     latex_render(profile_build_dir)
     
@@ -179,11 +178,14 @@ def compile_pdf(profile: str, template: str, output_name: str) -> None:
 def main():
     args = get_args()
 
-    compile_pdf(
-        profile=args.profile,
-        template=args.template,
-        output_name=args.output or args.profile
-    )
+    if args.command == "build":
+        compile_pdf(
+            profile=args.profile,
+            template=args.template,
+            output_name=args.output or args.profile
+        )
+    elif args.command == "git":
+        print("Git functionality is currently unavailable.")
 
 if __name__ == "__main__":
     main()
