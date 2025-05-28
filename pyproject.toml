@@ -5,7 +5,7 @@ build-backend = "hatchling.build"
 [project]
 name = "cv-cli"
 version = "0.1.0"
-description = "Generate LaTeX resumes with profiles and templates"
+description = "Command-line tool to generate resumes from YAML and LaTeX templates"
 readme = "README.md"
 license = { text = "MIT" }
 requires-python = ">=3.8"
