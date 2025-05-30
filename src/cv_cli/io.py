@@ -12,6 +12,8 @@ def move_pdf(pdf_path:str|Path, output_path:str|Path) -> None:
         output_path (str): destination path
     """
     if path.exists(pdf_path):
+        output_dir = output_path.parent
+        output_dir.mkdir(parents=True, exist_ok=True)
         replace(pdf_path, output_path)
         print(f"PDF moved to {output_path}")
         return

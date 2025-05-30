@@ -31,7 +31,7 @@ dev = [
 ]
 
 [project.scripts]
-cv-cli = "builder.cli:main"
+cv-cli = "cv_cli.cli:main"
 
 [tool.hatch.build]
 source = ["src"]

@@ -74,7 +74,7 @@ def latex_render(profile_build_dir: str) -> None:
     finally:
         chdir(starting_dir)
 
-def compile_pdf(profile: str, template: str, output_name: str) -> None:
+def compile_pdf(profile: str, template: str, output_name: Path) -> None:
     """Compiles template and profile into a pdf resume.
 
     Args:
@@ -85,7 +85,6 @@ def compile_pdf(profile: str, template: str, output_name: str) -> None:
     profile_path = PROFILES_DIR / f"{profile}.yaml"
     template_dir = TEMPLATES_DIR / template
     profile_build_dir = BUILD_DIR / profile
-    pdf_fname = f"{output_name}.pdf"
     tex_path = profile_build_dir / TEX_FNAME
 
     init_build(profile_build_dir, template_dir)
@@ -93,6 +92,6 @@ def compile_pdf(profile: str, template: str, output_name: str) -> None:
     latex_render(profile_build_dir)
     
     pdf_path = profile_build_dir / "resume.pdf"
-    output_path = OUTPUT_DIR / pdf_fname
+    output_name = output_name.with_suffix(".pdf")
 
-    move_pdf(pdf_path, output_path)
+    move_pdf(pdf_path, output_name)
