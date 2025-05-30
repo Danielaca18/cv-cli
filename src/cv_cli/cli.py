@@ -1,3 +1,4 @@
+from pathlib import Path
 from argparse import ArgumentParser, Namespace
 from .constants import DEFAULT_PROFILE, DEFAULT_TEMPLATE, DEFAULT_OUTPUT_FNAME
 from .render import compile_pdf
@@ -5,9 +6,9 @@ from .render import compile_pdf
 
 def build_parser(subparser):
     build = subparser.add_parser(name="build", help="Generate latex resumes from a yaml profile.")
-    build.add_argument("-p", "--profile", default=DEFAULT_PROFILE)
-    build.add_argument("-t", "--template", default=DEFAULT_TEMPLATE)
-    build.add_argument("-o", "--output", default=DEFAULT_OUTPUT_FNAME)
+    build.add_argument("-p", "--profile", help="Sets profile for build.", default=DEFAULT_PROFILE)
+    build.add_argument("-t", "--template", help="Sets resume template for build.", default=DEFAULT_TEMPLATE)
+    build.add_argument("-o", "--output", help="Sets output file path", default=DEFAULT_OUTPUT_FNAME, type=Path)
 
 def git_parser(subparser):
     git = subparser.add_parser(name="git", help="Sync profiles and templates with git.")
@@ -30,7 +31,7 @@ def main():
         compile_pdf(
             profile=args.profile,
             template=args.template,
-            output_name=args.output or args.profile
+            output_name=args.output
         )
     elif args.command == "git":
         print("Git functionality is currently unavailable.")
