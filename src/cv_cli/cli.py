@@ -1,5 +1,5 @@
 from argparse import ArgumentParser, Namespace
-from .constants import DEFAULT_PROFILE, DEFAULT_TEMPLATE
+from .constants import DEFAULT_PROFILE, DEFAULT_TEMPLATE, DEFAULT_OUTPUT_FNAME
 from .render import compile_pdf
 
 
@@ -7,7 +7,7 @@ def build_parser(subparser):
     build = subparser.add_parser(name="build", help="Generate latex resumes from a yaml profile.")
     build.add_argument("-p", "--profile", default=DEFAULT_PROFILE)
     build.add_argument("-t", "--template", default=DEFAULT_TEMPLATE)
-    build.add_argument("-o", "--output")
+    build.add_argument("-o", "--output", default=DEFAULT_OUTPUT_FNAME)
 
 def git_parser(subparser):
     git = subparser.add_parser(name="git", help="Sync profiles and templates with git.")
