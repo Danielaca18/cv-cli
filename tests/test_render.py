@@ -2,8 +2,8 @@ import pytest
 import yaml
 from unittest.mock import patch
 from pathlib import Path
-from builder.render import tex_esc, get_jinja_env, build_template, TEMPLATE_FNAME
-from builder.render import latex_render
+from cv_cli.render import tex_esc, get_jinja_env, build_template, TEMPLATE_FNAME
+from cv_cli.render import latex_render
 
 def test_tex_esc_escapes_latex_chars():
     assert tex_esc("test123%&$") == "test123\\%\\&\\$"
@@ -39,7 +39,7 @@ def test_latex_render_calls_latexmk(tmp_path):
     resume = tmp_path / "resume.tex"
     resume.write_text("empty")
 
-    with patch("builder.render.system") as mock_sys, patch("builder.render.chdir") as mock_chdir:
+    with patch("cv_cli.render.system") as mock_sys, patch("cv_cli.render.chdir") as mock_chdir:
         latex_render(tmp_path)
 
         mock_chdir.assert_any_call(tmp_path)

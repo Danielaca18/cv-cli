@@ -1,8 +1,8 @@
 import pytest
 import yaml
 from pathlib import Path
-from builder.io import move_pdf, init_template, init_build
-from builder.constants import OUTPUT_DIR
+from cv_cli.io import move_pdf, init_template, init_build
+from cv_cli.constants import OUTPUT_DIR
 
 def test_move_pdf_fail(tmp_path: Path, capfd: pytest.CaptureFixture):
     src = tmp_path / "fake.pdf"
@@ -40,7 +40,7 @@ def test_init_template(tmp_path: Path):
         assert (template_dir / path).read_text() == content
 
 def test_init_build(tmp_path: Path, monkeypatch: pytest.MonkeyPatch):
-    monkeypatch.setattr("builder.io.OUTPUT_DIR", str(tmp_path / "output"))
+    monkeypatch.setattr("cv_cli.io.OUTPUT_DIR", str(tmp_path / "output"))
     TEST_CONFIG = {"include_files": []}
 
     template_dir = tmp_path / "template"

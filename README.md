@@ -1,5 +1,5 @@
-# Resume Builder
-Resume Builder is a simple Python script that generates a LaTeX resume using the Jinja2 templating engine. It allows you to create a professional-looking resume in PDF format with minimal effort.
+# CV CLI
+CV CLI is a simple Python script that generates a LaTeX resume using the Jinja2 templating engine. It allows you to create a professional-looking resume in PDF format with minimal effort.
 
 ## Features
 - Easy to use: Just fill in a YAML file with your information and run the script.
@@ -22,9 +22,7 @@ Resume Builder is a simple Python script that generates a LaTeX resume using the
 ### Installation
 Clone the repository:
 ```bash
-   git clone https://github.com/danielaca18/resume-builder.git
-   cd resume-builder
-   pip install -r requirements.txt
+   pip install cv-cli
 ```
 
 ## Usage
@@ -32,7 +30,7 @@ Clone the repository:
 2. Select a template for your resume. You can choose from the provided templates in the `templates` directory or create your own.
 3. Run the script to generate your resume:
    ```bash
-   python main.py -p example -t default
+   cv-cli build -p example -t default
    ```
 4. The generated PDF resume will be saved in the `output` directory.
 
@@ -48,7 +46,6 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
     - Import & Sync Profiles
     - Import & Sync Templates
 - Template Configuration
-    - Include files
     - Name templates
 - Editor Integration
     - VSCode
