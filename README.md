@@ -49,3 +49,4 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
     - Name templates
 - Editor Integration
     - VSCode
+- Verbosity Argument
