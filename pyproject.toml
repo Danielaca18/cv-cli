@@ -53,3 +53,14 @@ dependencies = [
   "pytest",
   "pytest-cov"
 ]
+
+[tool.semantic_release]
+version_variable = "src/cv_cli/__init__.py:__version__"
+branch = "main"
+upload_to_pypi = false
+
+[tool.coverage.run]
+branch = true
+
+[tool.coverage.report]
+ignore_errors = true
