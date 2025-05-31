@@ -53,3 +53,9 @@ dependencies = [
   "pytest",
   "pytest-cov"
 ]
+
+[tool.coverage.run]
+branch = true
+
+[tool.coverage.report]
+ignore_errors = true
