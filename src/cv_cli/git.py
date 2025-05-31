@@ -2,7 +2,6 @@ from .io import onDelError
 from .constants import PROFILES_DIR
 from pathlib import Path
 from subprocess import run, CalledProcessError
-from json import loads
 from shutil import rmtree
 
 def get_repo_url(repo_name):

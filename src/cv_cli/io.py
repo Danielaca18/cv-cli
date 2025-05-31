@@ -51,7 +51,7 @@ def init_build(profile_build_dir: Path, template_dir: Path) -> None:
 def edit_file(fname:Path, editor_cmd:str):
     run([editor_cmd, fname], check=False)
 
-def onDelError(func, path, exc_info):
+def onDelError(func, path, _):
     if not access(path, W_OK):
         chmod(path, stat.S_IWRITE)
         func(path)
