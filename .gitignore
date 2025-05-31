@@ -1,9 +1,17 @@
 .venv/
 .vscode/
+.temp/
+.coverage
 
+dist/
 build/*
 output/*
 
 profiles/*
 !profiles/example.yaml
+
+templates/
+!templates/default
+!templates/sheets
+
 *__pycache__

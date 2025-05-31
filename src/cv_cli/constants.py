@@ -10,3 +10,6 @@ DEFAULT_TEMPLATE = "default"
 DEFAULT_PROFILE = "profile_default"
 TEX_FNAME = "resume.tex"
 TEMPLATE_FNAME = "template.j2"
+DEFAULT_OUTPUT_FNAME = "resume.pdf"
+
+DEFAULT_PROFILE_REPO = "cv-profiles"

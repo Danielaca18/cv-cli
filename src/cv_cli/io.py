@@ -1,7 +1,9 @@
 import yaml
-from os import path, replace, makedirs
-from shutil import copy
+import stat
+from os import chmod, path, replace, makedirs, access, W_OK
+from shutil import copy, copytree
 from pathlib import Path
+from subprocess import run
 from .constants import OUTPUT_DIR
 
 def move_pdf(pdf_path:str|Path, output_path:str|Path) -> None:
@@ -12,10 +14,12 @@ def move_pdf(pdf_path:str|Path, output_path:str|Path) -> None:
         output_path (str): destination path
     """
     if path.exists(pdf_path):
+        output_dir = output_path.parent
+        output_dir.mkdir(parents=True, exist_ok=True)
         replace(pdf_path, output_path)
         print(f"PDF moved to {output_path}")
-    else:
-        print(f"PDF not found: {pdf_path}")
+        return
+    print(f"PDF not found: {pdf_path}")
 
 def init_template(template_dir: Path, profile_build_dir: Path) -> None:
     """Initializes template files according to template config
@@ -43,3 +47,14 @@ def init_build(profile_build_dir: Path, template_dir: Path) -> None:
     makedirs(profile_build_dir, exist_ok=True)
     # copy(style_path, profile_build_dir)
     init_template(template_dir, profile_build_dir)
+
+def edit_file(fname:Path, editor_cmd:str):
+    run([editor_cmd, fname], check=False)
+
+def copy_dir(src, dest):
+    copytree(src, dest, dirs_exist_ok=True)
+
+def onDelError(func, path, _):
+    if not access(path, W_OK):
+        chmod(path, stat.S_IWRITE)
+        func(path)
