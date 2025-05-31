@@ -1,4 +1,3 @@
-from subprocess import run
 from .io import edit_file
 from .git import git_init, git_sync, git_clone
 from .constants import PROFILES_DIR
