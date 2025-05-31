@@ -3,8 +3,7 @@ from os import chdir, getcwd, system
 from re import sub
 from jinja2 import Environment, FileSystemLoader
 from pathlib import Path
-from .io import init_build, move_pdf
-from .constants import TEMPLATE_FNAME, PROFILES_DIR, TEMPLATES_DIR, BUILD_DIR, TEX_FNAME, OUTPUT_DIR
+from .constants import TEMPLATE_FNAME
 
 def tex_esc(text) -> str:
     """Regex filter for escaping special characters.
@@ -68,30 +67,8 @@ def latex_render(profile_build_dir: str) -> None:
     try:
         chdir(profile_build_dir)
         system(
-            "latexmk -pdf resume.tex -quiet"
+            "latexmk -pdf resume.tex"
             "&& latexmk -c"
         )
     finally:
         chdir(starting_dir)
-
-def compile_pdf(profile: str, template: str, output_name: Path) -> None:
-    """Compiles template and profile into a pdf resume.
-
-    Args:
-        profile (str): name of profile
-        template (str): name of template
-        output_name (str): pdf file name (no extension)
-    """
-    profile_path = PROFILES_DIR / f"{profile}.yaml"
-    template_dir = TEMPLATES_DIR / template
-    profile_build_dir = BUILD_DIR / profile
-    tex_path = profile_build_dir / TEX_FNAME
-
-    init_build(profile_build_dir, template_dir)
-    build_template(profile_path, template_dir, tex_path)
-    latex_render(profile_build_dir)
-    
-    pdf_path = profile_build_dir / "resume.pdf"
-    output_name = output_name.with_suffix(".pdf")
-
-    move_pdf(pdf_path, output_name)
