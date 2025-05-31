@@ -1,4 +1,7 @@
 # CV CLI
+
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) [![PyPI version](https://badge.fury.io/py/cv-cli.svg)](https://pypi.org/project/cv-cli/) [![GitHub last commit](https://img.shields.io/github/last-commit/danielaca18/cv-cli.svg)](https://github.com/danielaca18/cv-cli/commits/main)
+
 CV CLI is a simple Python script that generates a LaTeX resume using the Jinja2 templating engine. It allows you to create a professional-looking resume in PDF format with minimal effort.
 
 ## Features
