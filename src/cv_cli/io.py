@@ -2,6 +2,7 @@ import yaml
 from os import path, replace, makedirs
 from shutil import copy
 from pathlib import Path
+from subprocess import run
 from .constants import OUTPUT_DIR
 
 def move_pdf(pdf_path:str|Path, output_path:str|Path) -> None:
@@ -45,3 +46,6 @@ def init_build(profile_build_dir: Path, template_dir: Path) -> None:
     makedirs(profile_build_dir, exist_ok=True)
     # copy(style_path, profile_build_dir)
     init_template(template_dir, profile_build_dir)
+
+def edit_file(fname:Path, editor_cmd:str):
+    run([editor_cmd, fname], check=False)
