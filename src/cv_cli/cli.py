@@ -93,7 +93,7 @@ def run_profiles(args):
 
 def run_templates(args):
     if args.templates_command == "new":
-        new_profile(args.name, args.src)
+        new_template(args.name, args.src)
     elif args.templates_command == "edit":
         edit_template(args.name, args.editor)
     elif args.templates_command == "del":
