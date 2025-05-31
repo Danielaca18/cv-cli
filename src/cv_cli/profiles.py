@@ -1,6 +1,6 @@
 from subprocess import run
 from .io import edit_file
-from .git import git_init
+from .git import git_init, git_sync, git_clone
 from .constants import PROFILES_DIR
 
 def new_profile(profile_name, src_profile):
@@ -39,7 +39,7 @@ def init_profiles(repo_name, public:bool):
     git_init(PROFILES_DIR, repo_name, public)
 
 def sync_profiles():
-    raise NotImplementedError
+    git_sync(PROFILES_DIR)
 
 def clone_profiles(remote, force:bool):
-    raise NotImplementedError
+    git_clone(remote, PROFILES_DIR, force)

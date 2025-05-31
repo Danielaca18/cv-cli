@@ -1,5 +1,6 @@
 import yaml
-from os import path, replace, makedirs
+import stat
+from os import chmod, path, replace, makedirs, access, W_OK
 from shutil import copy
 from pathlib import Path
 from subprocess import run
@@ -49,3 +50,8 @@ def init_build(profile_build_dir: Path, template_dir: Path) -> None:
 
 def edit_file(fname:Path, editor_cmd:str):
     run([editor_cmd, fname], check=False)
+
+def onDelError(func, path, exc_info):
+    if not access(path, W_OK):
+        chmod(path, stat.S_IWRITE)
+        func(path)

@@ -1,10 +1,9 @@
-
+from .io import onDelError
 from .constants import PROFILES_DIR
 from pathlib import Path
 from subprocess import run, CalledProcessError
 from json import loads
 from shutil import rmtree
-
 
 def get_repo_url(repo_name):
     result = run(["gh", "repo", "view", repo_name, "--json", "url", "--jq", ".url"], capture_output=True, text=True)
@@ -40,7 +39,7 @@ def git_init(repo_dir:Path|str, repo_name, public:bool):
 
 def git_clone(remote_url:str, repo_dir:Path|str, force:bool):
     if force:
-        rmtree(repo_dir)
+        rmtree(repo_dir, onerror=onDelError)
     run(["git", "clone", remote_url, repo_dir], check=True)
 
 def git_pull(repo_dir):
