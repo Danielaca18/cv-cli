@@ -68,7 +68,7 @@ def latex_render(profile_build_dir: str) -> None:
     try:
         chdir(profile_build_dir)
         system(
-            "latexmk -pdf resume.tex"
+            "latexmk -pdf resume.tex -quiet"
             "&& latexmk -c"
         )
     finally:
