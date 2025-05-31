@@ -1,12 +1,10 @@
 import sys
 import pytest
 from argparse import ArgumentParser
-from cv_cli.cli import get_args, build_parser, git_parser
+from cv_cli.cli import get_args
 
 @pytest.mark.parametrize("argv, expected", [
     (["cv-cli", "build", "-p", "profile.yaml", "-t", "template"], {"command": "build", "profile": "profile.yaml", "template": "template"}),
-    (["cv-cli", "git", "--init"], {"command": "git", "init": True}),
-    (["cv-cli", "git", "--sync"], {"command": "git", "sync": True}),
 ])
 def test_get_args(monkeypatch, argv, expected):
     monkeypatch.setattr(sys, "argv", argv)

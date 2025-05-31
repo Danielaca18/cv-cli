@@ -1,7 +1,7 @@
 import yaml
 import stat
 from os import chmod, path, replace, makedirs, access, W_OK
-from shutil import copy
+from shutil import copy, copytree
 from pathlib import Path
 from subprocess import run
 from .constants import OUTPUT_DIR
@@ -50,6 +50,9 @@ def init_build(profile_build_dir: Path, template_dir: Path) -> None:
 
 def edit_file(fname:Path, editor_cmd:str):
     run([editor_cmd, fname], check=False)
+
+def copy_dir(src, dest):
+    copytree(src, dest, dirs_exist_ok=True)
 
 def onDelError(func, path, _):
     if not access(path, W_OK):
