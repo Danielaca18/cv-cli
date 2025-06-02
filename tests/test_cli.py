@@ -27,12 +27,12 @@ def test_get_args(monkeypatch, argv, expected):
         assert getattr(args, key) == val
 
 @pytest.mark.parametrize("runner, command_key, command_name, target_func, extra_args", [
-    (cli.run_profiles, "profiles_command", "new", "new_template", {"name": "test", "src": None}),
-    (cli.run_profiles, "profiles_command", "edit", "edit_template", {"name": "test", "editor": "vim"}),
-    (cli.run_profiles, "profiles_command", "del", "del_template", {"name": "test"}),
-    (cli.run_profiles, "profiles_command", "init", "init_template", {"name": "test", "public": True}),
-    (cli.run_profiles, "profiles_command", "sync", "sync_template", {}),
-    (cli.run_profiles, "profiles_command", "clone", "clone_template", {"remote": "url", "force": True}),
+    (cli.run_profiles, "profiles_command", "new", "new_profile", {"name": "test", "src": None}),
+    (cli.run_profiles, "profiles_command", "edit", "edit_profile", {"name": "test", "editor": "vim"}),
+    (cli.run_profiles, "profiles_command", "del", "del_profile", {"name": "test"}),
+    (cli.run_profiles, "profiles_command", "init", "init_profile", {"name": "test", "public": True}),
+    (cli.run_profiles, "profiles_command", "sync", "sync_profile", {}),
+    (cli.run_profiles, "profiles_command", "clone", "clone_profile", {"remote": "url", "force": True}),
 
     (cli.run_templates, "templates_command", "new", "new_template", {"name": "test", "src": None}),
     (cli.run_templates, "templates_command", "edit", "edit_template", {"name": "test", "editor": "nano"}),
