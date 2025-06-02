@@ -3,7 +3,7 @@ from argparse import ArgumentParser, Namespace
 from .constants import DEFAULT_PROFILE, DEFAULT_TEMPLATE, DEFAULT_OUTPUT_FNAME, DEFAULT_PROFILE_REPO
 from .render import compile_pdf
 from .git import git_init, git_clone, git_sync
-from .profiles import new_template, edit_template, del_template, init_template, sync_template, clone_template
+from .profiles import new_profile, edit_profile, del_profile, init_profile, sync_profile, clone_profile
 from .templates import new_template, edit_template, del_template, init_template, sync_template, clone_template
 
 def build_parser(subparser):
@@ -102,17 +102,17 @@ def run_profiles(args):
         args (Namespace): User arguments
     """
     if args.profiles_command == "new":
-        new_template(args.name, args.src)
+        new_profile(args.name, args.src)
     elif args.profiles_command == "edit":
-        edit_template(args.name, args.editor)
+        edit_profile(args.editor, args.name)
     elif args.profiles_command == "del":
-        del_template(args.name)
+        del_profile(args.name)
     elif args.profiles_command == "init":
-        init_template(args.name, args.public)
+        init_profile(args.name, args.public)
     elif args.profiles_command == "sync":
-        sync_template()
+        sync_profile()
     elif args.profiles_command == "clone":
-        clone_template(args.remote, args.force)
+        clone_profile(args.remote, args.force)
 
 def run_templates(args):
     """Handles control flow for templates subcommand.
