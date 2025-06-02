@@ -3,7 +3,7 @@ from argparse import ArgumentParser, Namespace
 from .constants import DEFAULT_PROFILE, DEFAULT_TEMPLATE, DEFAULT_OUTPUT_FNAME, DEFAULT_PROFILE_REPO
 from .render import compile_pdf
 from .git import git_init, git_clone, git_sync
-from .profiles import new_profile, edit_profile, del_profile, init_profiles, sync_profiles, clone_profiles
+from .profiles import new_template, edit_template, del_template, init_template, sync_template, clone_template
 from .templates import new_template, edit_template, del_template, init_template, sync_template, clone_template
 
 def build_parser(subparser):
@@ -79,17 +79,17 @@ def get_args() -> Namespace:
 
 def run_profiles(args):
     if args.profiles_command == "new":
-        new_profile(args.name, args.src)
+        new_template(args.name, args.src)
     elif args.profiles_command == "edit":
-        edit_profile(args.name, args.editor)
+        edit_template(args.name, args.editor)
     elif args.profiles_command == "del":
-        del_profile(args.name)
+        del_template(args.name)
     elif args.profiles_command == "init":
-        init_profiles(args.name, args.public)
+        init_template(args.name, args.public)
     elif args.profiles_command == "sync":
-        sync_profiles()
+        sync_template()
     elif args.profiles_command == "clone":
-        clone_profiles(args.remote, args.force)
+        clone_template(args.remote, args.force)
 
 def run_templates(args):
     if args.templates_command == "new":
@@ -98,7 +98,7 @@ def run_templates(args):
         edit_template(args.name, args.editor)
     elif args.templates_command == "del":
         del_template(args.name)
-    elif args.profiles_command == "init":
+    elif args.templates_command == "init":
         init_template(args.name, args.public)
     elif args.templates_command == "sync":
         sync_template(args.name)
@@ -114,8 +114,6 @@ def main():
             template=args.template,
             output_name=args.output
         )
-    elif args.command == "git":
-        print("Git functionality is currently unavailable.")
 
     elif args.command == "profiles":
         run_profiles(args)
