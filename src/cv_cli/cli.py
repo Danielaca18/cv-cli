@@ -7,12 +7,22 @@ from .profiles import new_template, edit_template, del_template, init_template, 
 from .templates import new_template, edit_template, del_template, init_template, sync_template, clone_template
 
 def build_parser(subparser):
+    """Adds build parser command and sub arguments to main parser.
+
+    Args:
+        subparser (_SubParsersAction[ArgumentParser]): Command subparser
+    """
     build = subparser.add_parser(name="build", help="Generate latex resumes from a yaml profile.")
     build.add_argument("-p", "--profile", help="Sets profile for build.", default=DEFAULT_PROFILE)
     build.add_argument("-t", "--template", help="Sets resume template for build.", default=DEFAULT_TEMPLATE)
     build.add_argument("-o", "--output", help="Sets output file path", default=DEFAULT_OUTPUT_FNAME, type=Path)
 
 def profiles_parser(subparser):
+    """Adds profiles command and sub arguments to main parser.
+
+    Args:
+        subparser (_SubParsersAction[ArgumentParser]): Command subparser
+    """
     profiles = subparser.add_parser("profiles", help="Manage and sync profile data.")
     subparser = profiles.add_subparsers(dest="profiles_command", required=True)
 
@@ -31,7 +41,6 @@ def profiles_parser(subparser):
     profiles_init.add_argument("name", nargs="?", help="Name of repo.", default=DEFAULT_PROFILE_REPO)
     profiles_init.add_argument("-p", "--public", help="Make repo public.", action="store_true")
 
-    # profile_sync
     subparser.add_parser("sync", help="Sync profiles with remote.")
 
     profiles_clone = subparser.add_parser("clone", help="Clone profiles from remote.")
@@ -39,6 +48,11 @@ def profiles_parser(subparser):
     profiles_clone.add_argument("-f", "--force", help="Forces clone (Removes existing repo.)", action="store_true")
 
 def templates_parser(subparser):
+    """Adds templates command and sub arguments to main parser.
+
+    Args:
+        subparser (_SubParsersAction[ArgumentParser]): Command subparser
+    """
     templates = subparser.add_parser("templates", help="Manage and sync template data.")
     subparser = templates.add_subparsers(dest="templates_command", required=True)
 
@@ -57,7 +71,6 @@ def templates_parser(subparser):
     templates_init.add_argument("name", nargs="?", help="Name of repo.", default=DEFAULT_PROFILE_REPO)
     templates_init.add_argument("-p", "--public", help="Make repo public.", action="store_true")
 
-    # template_sync
     templates_sync = subparser.add_parser("sync", help="Sync template with remote.")
     templates_sync.add_argument("name", help="Name of template.")
 
@@ -68,6 +81,11 @@ def templates_parser(subparser):
 
 
 def get_args() -> Namespace:
+    """Parses CLI arguments.
+
+    Returns:
+        Namespace: User arguments
+    """
     parser = ArgumentParser(prog="resume", description="Command-line tool to generate resumes from YAML and LaTeX templates")
     subparser = parser.add_subparsers(dest="command", required=True)
 
@@ -78,6 +96,11 @@ def get_args() -> Namespace:
     return parser.parse_args()
 
 def run_profiles(args):
+    """Handles control flow for profiles subcommand.
+
+    Args:
+        args (Namespace): User arguments
+    """
     if args.profiles_command == "new":
         new_template(args.name, args.src)
     elif args.profiles_command == "edit":
@@ -92,6 +115,11 @@ def run_profiles(args):
         clone_template(args.remote, args.force)
 
 def run_templates(args):
+    """Handles control flow for templates subcommand.
+
+    Args:
+        args (Namespace): User arguments
+    """
     if args.templates_command == "new":
         new_template(args.name, args.src)
     elif args.templates_command == "edit":
