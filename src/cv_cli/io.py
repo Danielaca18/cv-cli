@@ -48,13 +48,27 @@ def init_build(profile_build_dir: Path, template_dir: Path) -> None:
     # copy(style_path, profile_build_dir)
     init_template(template_dir, profile_build_dir)
 
-def edit_file(fname:Path, editor_cmd:str):
-    run([editor_cmd, fname], check=False)
+def edit_file(fpath:Path, editor_cmd:str):
+    """Runs editor command for file editing.
 
-def copy_dir(src, dest):
+    Args:
+        fpath (Path): Path to file.
+        editor_cmd (str): Command-line command for editor.
+    """
+    run([editor_cmd, fpath], check=False)
+
+def copy_dir(src:Path|str, dest:Path|str) -> None:
+    """Copies from source directory to destination directory.
+
+    Args:
+        src (Path|str): Source directory.
+        dest (Path|str): Destination directory.
+    """
     copytree(src, dest, dirs_exist_ok=True)
 
-def onDelError(func, path, _):
+def onDelError(func, path, _) -> None:
+    """Handler for deletion errors.
+    """
     if not access(path, W_OK):
         chmod(path, stat.S_IWRITE)
         func(path)
