@@ -45,4 +45,6 @@ Clone the repository:
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
 
 ## Planned Features
+- Support for plugins to extend functionality
+- Support for additional output formats (e.g., HTML, DOCX)
 - Verbosity Argument
