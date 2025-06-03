@@ -45,11 +45,4 @@ Clone the repository:
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
 
 ## Planned Features
-- Git Integration
-    - Import & Sync Profiles
-    - Import & Sync Templates
-- Template Configuration
-    - Name templates
-- Editor Integration
-    - VSCode
 - Verbosity Argument
