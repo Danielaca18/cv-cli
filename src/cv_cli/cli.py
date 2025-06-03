@@ -123,7 +123,7 @@ def run_templates(args):
     if args.templates_command == "new":
         new_template(args.name, args.src)
     elif args.templates_command == "edit":
-        edit_template(args.name, args.editor)
+        edit_template(args.editor, args.name)
     elif args.templates_command == "del":
         del_template(args.name)
     elif args.templates_command == "init":
