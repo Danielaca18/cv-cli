@@ -3,7 +3,13 @@ from .io import copy_dir, edit_file, onDelError
 from .git import git_clone, git_init, git_sync
 from shutil import rmtree
 
-def new_template(template_name, src_template):
+def new_template(template_name:str, src_template:str=None) -> None:
+    """Creates a new template.
+
+    Args:
+        template_name (str): Template name.
+        src_template (str, optional): Source template name. Defaults to None.
+    """
     template_path = TEMPLATES_DIR / template_name
 
     if template_path.exists():
@@ -17,7 +23,13 @@ def new_template(template_name, src_template):
             return
         copy_dir(src_path, template_path)
 
-def edit_template(template_name, editor_cmd):
+def edit_template(editor_cmd, template_name:str=None):
+    """Opens code editor in templates folder.
+
+    Args:
+        editor_cmd (str): Command line editor command.
+        template_name (str, optional): Template name. Defaults to None.
+    """
     template_path = TEMPLATES_DIR
     if template_name:
         template_path = template_path / template_name
