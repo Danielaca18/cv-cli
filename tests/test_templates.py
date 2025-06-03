@@ -49,7 +49,7 @@ def test_edit_template_call(tmp_templates_dir):
     template_path.mkdir()
 
     with patch("src.cv_cli.templates.edit_file") as mock:
-        edit_template(template_name, "code")
+        edit_template("code", template_name)
         mock.assert_called_once_with(template_path, "code")
 
 def test_edit_template_invalid(tmp_templates_dir, capsys):
