@@ -2,12 +2,12 @@ import pytest
 from unittest.mock import patch
 from pathlib import Path
 
-from src.cv_cli.profiles import new_template, edit_template, del_template, init_template, sync_template, clone_template
+from cv_cli.profiles import new_template, edit_template, del_template, init_template, sync_template, clone_template
 
 @pytest.fixture
 def tmp_profiles_dir(tmp_path, monkeypatch):
-    monkeypatch.setattr("src.cv_cli.constants.PROFILES_DIR", tmp_path)
-    monkeypatch.setattr("src.cv_cli.profiles.PROFILES_DIR", tmp_path)
+    monkeypatch.setattr("cv_cli.constants.PROFILES_DIR", tmp_path)
+    monkeypatch.setattr("cv_cli.profiles.PROFILES_DIR", tmp_path)
     yield tmp_path
 
 def test_new_profile_creates(tmp_profiles_dir):
@@ -47,7 +47,7 @@ def test_edit_profile_call(tmp_profiles_dir):
     profile_path = tmp_profiles_dir / f"{profile_name}.yaml"
     profile_path.touch()
 
-    with patch("src.cv_cli.profiles.edit_file") as mock:
+    with patch("cv_cli.profiles.edit_file") as mock:
         edit_template(profile_name, "code")
         mock.assert_called_once_with(profile_path, "code")
 
@@ -69,16 +69,16 @@ def test_del_profile_invalid(tmp_profiles_dir, capsys):
     assert "not exist" in captured.out
 
 def test_init_profiles_calls(tmp_profiles_dir):
-    with patch("src.cv_cli.profiles.git_init") as mock:
+    with patch("cv_cli.profiles.git_init") as mock:
         init_template("test", True)
         mock.assert_called_once_with(tmp_profiles_dir, "test", True)
 
 def test_sync_profiles_calls(tmp_profiles_dir):
-    with patch("src.cv_cli.profiles.git_sync") as mock:
+    with patch("cv_cli.profiles.git_sync") as mock:
         sync_template()
         mock.assert_called_once()
 
 def test_clone_profiles_calls(tmp_profiles_dir):
-    with patch("src.cv_cli.profiles.git_clone") as mock:
+    with patch("cv_cli.profiles.git_clone") as mock:
         clone_template("test.com", True)
         mock.assert_called_once_with("test.com", tmp_profiles_dir, True)
