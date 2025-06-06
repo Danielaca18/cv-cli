@@ -23,21 +23,21 @@ CV CLI is a simple Python script that generates a LaTeX resume using the Jinja2 
 - LaTeX distribution (e.g., TeX Live, MikTeX) installed on your system
 
 ### Installation
-Clone the repository:
 ```bash
    pip install cv-cli
 ```
 
 ## Usage
 ```bash
-cv-cli <COMMAND> [OPTIONS]
+cv-cli <COMMAND> [OPTIONS]  
 ```
+Ex. ```cv-cli build -p example -t default```
 ## Commands
 ##### Build
 
   Build CV PDF.
 ```bash
-build -p example -t default
+build [OPTIONS]
 ```
 ##### Profiles
   Create, edit and sync Profiles.
