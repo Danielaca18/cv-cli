@@ -14,7 +14,7 @@ CV CLI is a simple Python script that generates a LaTeX resume using the Jinja2 
 ## Resume Previews
 | Default Template | Sheets Template |
 |------------------|-----------------|
-| ![Default Template](previews/default.png) | ![Sheets Template](previews/sheets.png) |
+| ![Default Template](https://github.com/Danielaca18/cv-cli/blob/main/previews/default.png?raw=true) | ![Sheets Template](https://github.com/Danielaca18/cv-cli/blob/main/previews/sheets.png?raw=true) |
 
 
 ## Getting Started
@@ -29,13 +29,35 @@ Clone the repository:
 ```
 
 ## Usage
-1. Create a YAML file with your resume information. You can use the provided `example.yaml` as a template.
-2. Select a template for your resume. You can choose from the provided templates in the `templates` directory or create your own.
-3. Run the script to generate your resume:
+```bash
+cv-cli <COMMAND> [OPTIONS]
+```
+## Commands
+##### Build
+
+  Build CV PDF.
+```bash
+build -p example -t default
+```
+##### Profiles
+  Create, edit and sync Profiles.
    ```bash
-   cv-cli build -p example -t default
-   ```
-4. The generated PDF resume will be saved in the `output` directory.
+  cv-cli profiles new <name>
+  cv-cli profiles edit <name>
+  cv-cli profiles clone <url>
+  cv-cli profiles init
+  cv-cli profiles rm <name>
+  ```
+
+##### Templates
+  Create, edit and sync Templates:  
+  ```bash
+  cv-cli templates new <name>
+  cv-cli templates edit <name>
+  cv-cli templates clone <url>
+  cv-cli templates init
+  cv-cli templates rm <name>
+  ```
 
 ## Acknowledgements
 - This project uses the [Resume Template](https://github.com/jakegut/resume) by Jake Gutierrez as a base for the LaTeX templates. Thank you for your work!
