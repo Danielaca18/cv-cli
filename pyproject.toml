@@ -4,7 +4,6 @@ build-backend = "hatchling.build"
 
 [project]
 name = "cv-cli"
-version = "0.1.0"
 description = "Command-line tool to generate resumes from YAML and LaTeX templates"
 readme = "README.md"
 license = { text = "MIT" }
@@ -20,6 +19,7 @@ dependencies = [
   "PyYAML==6.0.2",
   "watchdog==6.0.0"
 ]
+dynamic = ["version"]
 
 [project.optional-dependencies]
 dev = [
@@ -54,7 +54,16 @@ dependencies = [
   "pytest-cov"
 ]
 
+[tool.hatch.version]
+source = "vsc"
+
 [tool.semantic_release]
-version_variable = "src/cv_cli/__init__.py:__version__"
+version_variable = "pyproject.toml:version"
 branch = "main"
 upload_to_pypi = false
+
+[tool.coverage.run]
+branch = true
+
+[tool.coverage.report]
+ignore_errors = true
