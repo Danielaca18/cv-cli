@@ -15,12 +15,12 @@ jobs:
         
       - name: Install dependencies
         run: |
-          pip install .
+          pip install -e .
           pip install pytest pytest-cov
           
       - name: Run tests with cover
         run: |
-          pytest --cov=src
+          pytest --cov=cv_cli
           
       - name: Codecov badge
         uses: codecov/codecov-action@v3
