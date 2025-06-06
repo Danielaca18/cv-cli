@@ -25,7 +25,7 @@ def test_new_template_with_src(tmp_templates_dir):
     
     new_template(template_name, src_name)
     template_path = tmp_templates_dir / template_name
-    assert (template_path / "test.tex ").read_text() == "test"
+    assert (template_path / "test.tex").read_text() == "test"
 
 def test_new_template_with_src_invalid(tmp_templates_dir, capsys):
     src_name = "src"
