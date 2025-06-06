@@ -64,6 +64,8 @@ source = "vcs"
 version_variable = "pyproject.toml:version"
 branch = "main"
 upload_to_pypi = false
+changelog_file = "CHANGELOG.md"
+template_dir = "template_dir"
 
 [tool.coverage.run]
 branch = true
