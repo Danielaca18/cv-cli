@@ -2,12 +2,12 @@ import pytest
 from unittest.mock import patch
 from pathlib import Path
 
-from src.cv_cli.templates import new_template, edit_template, del_template, init_template, sync_template, clone_template
+from cv_cli.templates import new_template, edit_template, del_template, init_template, sync_template, clone_template
 
 @pytest.fixture
 def tmp_templates_dir(tmp_path, monkeypatch):
-    monkeypatch.setattr("src.cv_cli.constants.TEMPLATES_DIR", tmp_path)
-    monkeypatch.setattr("src.cv_cli.templates.TEMPLATES_DIR", tmp_path)
+    monkeypatch.setattr("cv_cli.constants.TEMPLATES_DIR", tmp_path)
+    monkeypatch.setattr("cv_cli.templates.TEMPLATES_DIR", tmp_path)
     yield tmp_path
 
 def test_new_template_creates(tmp_templates_dir):
@@ -48,7 +48,7 @@ def test_edit_template_call(tmp_templates_dir):
     template_path = tmp_templates_dir / template_name
     template_path.mkdir()
 
-    with patch("src.cv_cli.templates.edit_file") as mock:
+    with patch("cv_cli.templates.edit_file") as mock:
         edit_template(template_name, "code")
         mock.assert_called_once_with(template_path, "code")
 
@@ -70,16 +70,16 @@ def test_del_template_invalid(tmp_templates_dir, capsys):
     assert "not exist" in captured.out
 
 def test_init_templates_calls(tmp_templates_dir):
-    with patch("src.cv_cli.templates.git_init") as mock:
+    with patch("cv_cli.templates.git_init") as mock:
         init_template("test", True)
         mock.assert_called_once_with(tmp_templates_dir / "test", "test", True)
 
 def test_sync_templates_calls(tmp_templates_dir):
-    with patch("src.cv_cli.templates.git_sync") as mock:
+    with patch("cv_cli.templates.git_sync") as mock:
         sync_template("test")
         mock.assert_called_once()
 
 def test_clone_templates_calls(tmp_templates_dir):
-    with patch("src.cv_cli.templates.git_clone") as mock:
+    with patch("cv_cli.templates.git_clone") as mock:
         clone_template("test.com", "template", True)
         mock.assert_called_once_with("test.com", tmp_templates_dir / "template", True)
