@@ -1,5 +1,8 @@
 [build-system]
-requires = ["hatchling >= 1.26"]
+requires = [
+  "hatchling >= 1.26",
+  "hatch-vcs"
+]
 build-backend = "hatchling.build"
 
 [project]
@@ -37,7 +40,7 @@ cv-cli = "cv_cli.cli:main"
 source = ["src"]
 
 [tool.hatch.build.targets.wheel]
-packages = ["src/builder"]
+packages = ["src/cv_cli"]
 
 [tool.hatch.envs.default]
 dependencies = [
@@ -55,7 +58,7 @@ dependencies = [
 ]
 
 [tool.hatch.version]
-source = "vsc"
+source = "vcs"
 
 [tool.semantic_release]
 version_variable = "pyproject.toml:version"
